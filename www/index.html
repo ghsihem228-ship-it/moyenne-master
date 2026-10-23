@@ -310,13 +310,21 @@ body.entering{overflow:hidden}#entry{position:fixed;inset:0;z-index:70;overflow:
 @media(max-width:1000px){.entry-shell{padding:22px 24px max(24px,env(safe-area-inset-bottom));gap:14px}.entry-body{display:flex;flex-direction:column;gap:20px;padding:4px 0 24px}.entry-copy{order:0;width:100%;max-width:430px}.entry-art{width:280px;height:230px;margin:10px 0 0}.art-card{width:162px;height:190px;border-radius:22px;padding:20px}.art-label{font-size:5px}.art-card svg{width:90px;height:72px;margin:12px auto}.art-track{margin-top:12px;height:5px}.art-lines{margin-top:10px}.art-lines i{height:4px;width:30px}.art-orbit{width:220px;height:220px}.orbit-two{width:270px;height:270px}.art-symbol{font-size:34px}.symbol-one{top:20px}.symbol-two{font-size:45px;bottom:20px}.art-badge{bottom:0;padding:9px 12px;right:0;font-size:9px;border-radius:12px}.art-badge span{width:20px;height:20px}.entry-copy h1{font-size:40px;margin:12px 0 16px}.entry-kicker{font-size:9px}.entry-copy p{font-size:14px;line-height:1.7}.entry-features{font-size:11px;gap:16px;margin:18px 0 24px}#entry-start{max-width:none}.entry-footer{font-size:10px;padding-top:18px}.entry-university{font-size:9px}.entry-brand{font-size:16px}.entry-logo{height:46px;width:46px;font-size:36px}}
 @media(max-width:360px){.entry-shell{padding-inline:18px}.entry-copy h1{font-size:36px}.entry-features{gap:10px}.entry-footer>span:last-child{display:none}}
 @media(prefers-reduced-motion:no-preference){.entry-art{animation:entry-rise .7s ease both}.entry-copy{animation:entry-rise .65s .1s ease both}@keyframes entry-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+
+/* UI polish: identity, readable result status, explicit choices and safe data actions. */
+.app-name{font-size:12px;font-weight:800;letter-spacing:-.02em;color:var(--muted)}.app-name span{color:var(--accent)}.ttl h1{font-size:19px;margin-top:1px}.appbar .avatar{font-family:Georgia,serif;font-size:24px;letter-spacing:-.07em}.sub{font-size:11px}.completion{display:grid;gap:6px;font-size:11px;color:var(--hero-muted);margin-top:4px}.completion .bar{height:4px}.completion .bar i{background:#d1e2ff}.hero .rv b{font-size:2.1rem}.hero .chip.warn{background:#fff1c9;color:#5c3d00}.option-label{display:block;color:var(--accent);font-size:11px;font-weight:750;margin-bottom:7px}.option-note{display:block;font-weight:400;color:var(--muted);font-size:11px;line-height:1.5;margin-top:6px}.mname select{width:100%;min-height:48px;font-size:13px}.settings-help{font-size:13px;line-height:1.7;color:var(--muted);margin:10px 0 18px}
+#confirm-dialog{border:1px solid var(--line);border-radius:24px;padding:26px;background:var(--surface);color:var(--fg);width:min(440px,calc(100% - 32px));max-height:85dvh;overflow:auto;box-shadow:0 24px 80px #050b2855}#confirm-dialog::backdrop{background:#081229aa;backdrop-filter:blur(4px)}#confirm-dialog h2{font-size:21px;letter-spacing:-.03em;margin:16px 0 12px}#confirm-dialog p{color:var(--muted);font-size:14px;line-height:1.75;margin:0 0 24px;overflow-wrap:anywhere}.confirm-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--warn-soft);color:var(--warn);font-size:22px;font-weight:800}#confirm-dialog .actions{justify-content:flex-end}.btn:disabled{opacity:.65;cursor:wait}
+@media(max-width:599px){.appbar .avatar{display:grid;width:38px;height:42px;border-radius:12px;font-size:22px}.appbar{gap:7px;padding-block:10px}.app-name{font-size:10px}.ttl h1{font-size:16px}.sub{display:none}.ibtn{width:48px}.hero{gap:16px}.hero .rv b{font-size:1.8rem}.hero .chip{font-size:10px}.herotxt{gap:8px}.hstats{gap:5px}.stat{font-size:10px}.option-note{font-size:11px}}
+
+.about-head{display:flex;align-items:center;gap:12px}.about-head h2{font-size:20px;letter-spacing:-.04em;margin:4px 0 0}.version-tag{margin-left:auto;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:6px 10px;font-size:11px;font-weight:750}.about-by{font-size:13px;color:var(--muted);margin:18px 0 0}.about-by strong{color:var(--fg)}.about-links{display:grid;gap:8px}.about-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 14px;color:var(--accent);background:var(--accent-soft);border-radius:12px;text-decoration:none;font-size:13px;font-weight:650;overflow-wrap:anywhere}.about-links a:hover{filter:brightness(.97)}
+@media(max-width:599px){.uehead{display:grid;grid-template-columns:minmax(0,1fr) auto auto 16px;gap:6px}.uehead .t{min-width:0;max-width:none}.uehead .ua{white-space:nowrap}.uehead .chev{width:16px;height:16px}}
 </style>
 
 <div id="entry" aria-label="Moyenne Master"></div>
 <div class="wrap">
   <header class="appbar" id="appbar">
-    <div class="avatar" id="avatar" aria-hidden="true">AFA</div>
-    <div class="ttl"><h1 id="bar-title">Moyenne Master</h1><p class="sub" id="greet"></p></div>
+    <div class="avatar" id="avatar" aria-hidden="true">m.</div>
+    <div class="ttl"><div class="app-name">Moyenne Master<span>.</span></div><h1 id="bar-title">Moyenne Master</h1><p class="sub" id="greet"></p></div>
     <button class="ibtn" id="b-lang" type="button" aria-label="Change language">EN</button>
     <button class="ibtn" id="b-theme" type="button" aria-label="Theme"></button>
     <button class="ibtn" id="b-lock" type="button" aria-label="Lock" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button>
@@ -353,6 +361,8 @@ body.entering{overflow:hidden}#entry{position:fixed;inset:0;z-index:70;overflow:
   <button role="tab" data-view="set" aria-selected="false"><span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></span><span class="lb" id="nl-set"></span></button>
 </div></nav>
 
+<input type="file" id="restore-file" accept=".json,application/json" hidden>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-note"><form method="dialog"><div class="confirm-icon" aria-hidden="true">!</div><h2 id="confirm-title"></h2><p id="confirm-note"></p><div class="actions"><button class="btn" id="confirm-cancel" value="cancel"></button><button class="btn danger" id="confirm-accept" value="accept"></button></div></form></dialog>
 <div id="sheet" hidden><div class="scrim" data-act="sheet:close"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title" id="sheet-body"></div></div>
 <div id="snack" hidden role="status" aria-live="polite"><span id="snack-t"></span><button type="button" id="snack-a"></button></div>
 
@@ -371,6 +381,8 @@ body.entering{overflow:hidden}#entry{position:fixed;inset:0;z-index:70;overflow:
 
 <div id="splash" aria-hidden="true"><div class="sp-mark">M</div><div class="sp-name">Moyenne Master</div><div class="sp-sub">Mathématiques · 3 spécialités</div></div>
 
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf.plugin.autotable.min.js"></script>
 <script>
 var T = {
   en:{
@@ -445,6 +457,29 @@ var T = {
   }
 };
 
+Object.assign(T.en, {
+ chooseOne:'Choose one module', optionNote:'Only the selected module counts in your results.',
+ completion:'{n} of {t} modules complete', deleteTitle:'Remove this module?',
+ deleteNote:'Removing “{name}” changes your semester average, coefficients and credits. You can undo immediately afterwards.',
+ deleteConfirm:'Remove module', backupTitle:'Backup & restore', backupNote:'Save grades, module changes and settings for all three specialities. Your pattern lock is not included. Keep this file somewhere private.',
+ backupExport:'Save a backup', backupImport:'Restore a backup', backupSaved:'Backup ready. Save or share the file.', backupError:'The file could not be saved. Please try again.',
+ restoreTitle:'Replace your saved results?', restoreNote:'This backup will replace grades, module changes and settings for all three specialities. Your current pattern lock will stay. Save a backup of your current data first.',
+ restoreConfirm:'Restore results', restoreInvalid:'This is not a valid Moyenne Master backup. Your data has not changed.', restored:'Backup restored.', nativeFiles:'File sharing is unavailable. Rebuild the APK with the latest project dependencies.',
+ reportPdf:'Export transcript as PDF', pdfFailed:'The PDF could not be created. Please try again.', reportTitle:'Academic transcript', reportNote:'Personal estimate — not an official university transcript.', savedOn:'Generated on', reportCredits:'Credits', provisional:'Provisional',
+ about:'About the app'
+});
+Object.assign(T.fr, {
+ chooseOne:'Choisissez un seul module', optionNote:'Seul le module sélectionné compte dans vos résultats.',
+ completion:'{n} modules complets sur {t}', deleteTitle:'Retirer ce module ?',
+ deleteNote:'Retirer « {name} » modifie la moyenne, les coefficients et les crédits du semestre. Vous pourrez annuler juste après.',
+ deleteConfirm:'Retirer le module', backupTitle:'Sauvegarde et restauration', backupNote:'Sauvegardez les notes, les modifications des modules et les réglages des trois spécialités. Le schéma de verrouillage est exclu. Conservez ce fichier en lieu privé.',
+ backupExport:'Sauvegarder', backupImport:'Restaurer', backupSaved:'Sauvegarde prête. Enregistrez ou partagez le fichier.', backupError:'Impossible d’enregistrer le fichier. Réessayez.',
+ restoreTitle:'Remplacer vos résultats ?', restoreNote:'Cette sauvegarde remplacera les notes, les modifications des modules et les réglages des trois spécialités. Votre schéma actuel sera conservé. Sauvegardez vos données actuelles au préalable.',
+ restoreConfirm:'Restaurer les résultats', restoreInvalid:'Ce fichier n’est pas une sauvegarde Moyenne Master valide. Vos données sont conservées.', restored:'Sauvegarde restaurée.', nativeFiles:'Partage de fichiers indisponible. Reconstruisez l’APK avec les nouvelles dépendances.',
+ reportPdf:'Exporter le relevé en PDF', pdfFailed:'Impossible de créer le PDF. Réessayez.', reportTitle:'Relevé de notes', reportNote:'Estimation personnelle — relevé non officiel.', savedOn:'Généré le', reportCredits:'Crédits', provisional:'Provisoire',
+ about:'À propos'
+});
+
 var BASE = [
   { id:'s1', ues:[
     { code:'UEF11', k:'F', mods:[
@@ -498,6 +533,7 @@ moduleAt('edp',1,0,2).name = 'Équations aux dérivées partielles';
 moduleAt('edp',1,1,0).name = 'Méthode des éléments finis';
 moduleAt('edp',1,1,1).opts = ['Formulations variationnelles pour les problèmes aux limites','Inéquations variationnelles','Degré topologique et applications','EDP et traitement de l’image'];
 
+var APP_VERSION = '2.2.0';
 var KEY = 'moyenne-master-v3';
 function defaults(){ return { speciality:'afa', profiles:{}, v:{}, o:{}, c:{}, custom:[], deleted:[], target:{s1:10, s2:10}, lang:'fr', view:'s1', theme:'auto', name:'', scale:'20', lock:undefined }; }
 var state = defaults();
@@ -605,8 +641,8 @@ function mention(a){ if(state.lang === 'en') return a >= 16 ? 'Very good' : a >=
 /* ---------- helpers ---------- */
 function greet(){
   var n = (state.name || '').trim();
-  el('greet').textContent = 'Moyenne Master · ' + (n ? t('hello').replace('{n}', n) : t('welcome'));
-  el('avatar').textContent = n ? n.charAt(0).toUpperCase() : state.speciality.toUpperCase();
+  el('greet').textContent = n ? t('hello').replace('{n}', n) : t('welcome');
+  el('avatar').textContent = 'm.';
 }
 function buzz(p){ try { if (navigator.vibrate) navigator.vibrate(p); } catch(e){} }
 function tween(node, to){
@@ -658,7 +694,7 @@ function ring(id){
 }
 function buildSem(sem){
   var h = '<div class="hero" id="hero-' + sem.id + '">' + ring(sem.id) + '<div class="herotxt"><div class="hcap">' + t('semAvg') + '</div><div id="sch-' + sem.id + '"></div>' +
-       '<div><div class="hcr"><span id="scr-' + sem.id + '">0</span><span>/ <span id="scm-' + sem.id + '">30</span> ' + t('credits') + '</span></div><div class="bar" style="margin-top:6px"><i id="sb-' + sem.id + '"></i></div></div><div class="hstats" id="hst-' + sem.id + '"></div></div></div>';
+       '<div><div class="hcr"><span id="scr-' + sem.id + '">0</span><span>/ <span id="scm-' + sem.id + '">30</span> ' + t('credits') + '</span></div><div class="bar" style="margin-top:6px"><i id="sb-' + sem.id + '"></i></div></div><div class="hstats" id="hst-' + sem.id + '"></div><div class="completion"><div id="complete-label-' + sem.id + '"></div><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="complete-bar-' + sem.id + '"><i id="complete-fill-' + sem.id + '"></i></div></div></div></div>';
   h += '<div class="card empty" id="emp-' + sem.id + '">' + EMPTY_SVG + '<b>' + t('emptyTitle') + '</b><p>' + t('emptyBody') + '</p><button class="btn primary" type="button" data-act="focusfirst:' + sem.id + '">' + t('emptyCta') + '</button></div>';
   h += '<div class="card"><div class="goalh"><div class="cap">' + t('goalTitle') + '</div><input class="target-number" id="tgv-' + sem.id + '" data-s="' + sem.id + '" type="number" min="0" max="' + sc().max + '" step="' + sc().step + '" aria-label="' + esc(t('goalTitle')) + '"></div>' +
        '<input type="range" class="tgr" id="tgr-' + sem.id + '" data-s="' + sem.id + '" min="0" max="' + sc().max + '" step="' + sc().step + '" value="' + (state.target[sem.id] * sc().k).toFixed(sc().dec) + '" aria-label="' + esc(t('goalTitle')) + '">' +
@@ -674,7 +710,7 @@ function buildSem(sem){
       var v = state.v[m.id] || {};
       var sel = parseInt(state.o[m.id] || 0, 10);
       var name = m.opts
-        ? '<select id="sel-' + m.id + '" aria-label="' + esc(m.name) + '">' + m.opts.map(function(o, i){ return '<option value="' + i + '"' + (i === sel ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select>'
+        ? '<label class="option-label" for="sel-' + m.id + '">' + t('chooseOne') + '</label><select id="sel-' + m.id + '" aria-describedby="option-note-' + m.id + '">' + m.opts.map(function(o, i){ return '<option value="' + i + '"' + (i === sel ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select><small class="option-note" id="option-note-' + m.id + '">' + t('optionNote') + '</small>'
         : esc(m.name);
       var w = m.cc > 0 ? Math.round(m.cc*100) + t('ccW') + ' · ' + Math.round((1-m.cc)*100) + t('examW') : t('exam100');
       h += '<div class="mod" id="mod-' + m.id + '"><div class="mtop"><div class="mname">' + name + '<div class="mmeta">' + (m.opts ? esc(m.name) + ' · ' : '') + t('coef') + ' ' + m.coef + ' · ' + m.cr + ' ' + t('cr') + ' · ' + w + (m.custom ? ' · ' + t('custom') : '') + '</div></div>' +
@@ -701,7 +737,7 @@ function buildYear(){
     '<div class="card"><div class="rows"><div><span>' + t('mention') + '</span><b id="y-mention">—</b></div></div><p class="scale">' + t('yearNote') + '. ' + t('scale') + '</p></div>' +
     '<div class="card"><div class="cap">' + t('insights') + '</div><div class="insights" id="ins"></div></div>' +
     '<div class="card"><div class="cap">' + t('overview') + '</div><div id="bars"></div></div>' +
-    '<div class="card"><button class="btn primary" data-act="copy" type="button">' + t('copy') + '</button></div>' +
+    '<div class="card"><div class="actions"><button class="btn primary" data-act="copy" type="button">' + t('copy') + '</button><button class="btn" type="button" data-act="pdf">' + t('reportPdf') + '</button></div></div>' +
     '<div class="card"><div class="cap" style="margin-bottom:8px">' + t('transcript') + '</div><div class="scroll"><table class="tr" id="tr"></table></div></div>';
 }
 function buildSettings(){
@@ -719,7 +755,8 @@ function buildSettings(){
     '<div class="card"><div class="cap">' + t('language') + '</div><div class="seg">' + langBtns + '</div></div>' +
     '<div class="card"><div class="cap">' + t('security') + '</div><div class="srow"><span>' + (on ? t('patOn') : t('patOff')) + '</span><span class="chip ' + (on ? 'good' : '') + '">' + (on ? 'ON' : 'OFF') + '</span></div><div class="actions">' + lockBtns + '</div><p class="scale">' + t('patNote') + '</p></div>' +
     '<div class="card"><div class="cap">' + t('data') + '</div><div class="actions"><button class="btn primary" type="button" data-act="copy" id="copy">' + t('copy') + '</button><button class="btn" type="button" data-act="reset" id="reset">' + t('reset') + '</button></div><textarea id="fallback" readonly hidden aria-label="Summary"></textarea></div>' +
-    '<div class="card creator"><div class="creator-mark">gs.</div><div><b>Made by Gherissi Sihem</b><p>' + (state.lang==='fr' ? 'Conçu pour votre réussite.' : 'Designed for your next milestone.') + '</p></div></div>' +
+    '<div class="card"><div class="cap">' + t('backupTitle') + '</div><p class="settings-help">' + t('backupNote') + '</p><div class="actions"><button class="btn primary" type="button" data-act="backup">' + t('backupExport') + '</button><button class="btn" type="button" data-act="restore">' + t('backupImport') + '</button></div></div>' +
+    '<section class="card about-card" id="about-app"><div class="about-head"><div class="creator-mark">gs.</div><div><div class="cap">' + t('about') + '</div><h2>Moyenne Master</h2></div><span class="version-tag">v' + APP_VERSION + '</span></div><p class="about-by">Made by <strong>Gherissi Sihem</strong></p><p class="settings-help">' + (state.lang==='fr' ? 'Un espace pour suivre vos notes, préparer vos objectifs et avancer dans votre master de mathématiques.' : 'A space to track your marks, plan your goals and move forward in your mathematics master’s degree.') + '</p><div class="about-links"><a href="https://sihem-math-dev.netlify.app/" target="_blank" rel="noopener noreferrer"><span>Portfolio</span><span aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a><a href="mailto:ghsihem228@gmail.com"><span>ghsihem228@gmail.com</span><span aria-hidden="true">@</span></a><a href="mailto:ghsihem228@gmail.com?subject=Moyenne%20Master%20-%20Feedback"><span>' + (state.lang==='fr' ? 'Signaler un problème' : 'Report an issue') + '</span><span aria-hidden="true">+</span></a></div></section>'  +
     '<div class="card how"><p>' + t('how1') + '</p><p>' + t('how2') + '</p></div>';
   el('b-lock').hidden = !on;
 }
@@ -732,7 +769,7 @@ function buildAll(){
   el('speciality-note').textContent = state.lang === 'fr' ? 'Modules et coefficients chargés automatiquement' : 'Modules and coefficients loaded automatically';
   el('speciality').value = state.speciality;
   el('speciality-label').textContent = state.lang === 'fr' ? 'Spécialité' : 'Speciality';
-  el('avatar').textContent = state.speciality.toUpperCase();
+  el('avatar').textContent = 'm.';
   el('nl-s1').textContent = t('s1'); el('nl-s2').textContent = t('s2'); el('nl-y').textContent = t('y'); el('nl-set').textContent = t('set');
   el('fab-l').textContent = t('addModule'); el('fab').setAttribute('aria-label', t('addModule'));
   el('b-lock').setAttribute('aria-label', t('lockNow'));
@@ -812,6 +849,11 @@ function update(){
     sem.ues.forEach(function(ue){ ue.mods.forEach(function(m){ modAll++; var rr = calcMod(m); if (rr.done && rr.avg >= 10) modOk++; }); });
     el('hst-' + sem.id).innerHTML = '<span class="stat">' + t('ueShort') + ' <b>' + ueOk + '/' + sem.ues.length + '</b></span><span class="stat">' + t('modShort') + ' <b>' + modOk + '/' + modAll + '</b></span>';
     el('emp-' + sem.id).hidden = S.n > 0;
+    var completeText=t('completion').replace('{n}',S.n).replace('{t}',S.total);if(state.lang==='fr' && S.n===1)completeText=completeText.replace('modules complets','module complet');
+    el('complete-label-' + sem.id).textContent=completeText;
+    var pct = S.total ? Math.round(100*S.n/S.total) : 0;
+    el('complete-bar-' + sem.id).setAttribute('aria-valuenow',pct);el('complete-bar-' + sem.id).setAttribute('aria-label',t('entered'));
+    el('complete-fill-' + sem.id).style.width=pct+'%';
 
     /* what-if planner */
     var tv = state.target[sem.id];
@@ -1053,7 +1095,10 @@ document.addEventListener('click', function(e){
     sheetCC = arg === '40' ? .4 : 0;
     Array.prototype.forEach.call(b.parentNode.children, function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
   }
-  else if (act === 'del') deleteCustom(arg);
+  else if (act === 'del') requestDelete(arg,b);
+  else if (act === 'backup') exportBackup(b);
+  else if (act === 'pdf') exportTranscriptPdf(b);
+  else if (act === 'restore') el('restore-file').click();
   else if (act === 'view') show(arg);
   else if (act === 'focusfirst'){
     var unit=SEMS.filter(function(s){return s.id===arg;})[0].ues.find(function(u){return u.mods.length>0;});if(!unit){openSheet();return;}state.c[unit.code]=0;el('ue-'+unit.code).classList.remove('collapsed');el('ue-'+unit.code).querySelector('button').setAttribute('aria-expanded','true');save();
@@ -1110,6 +1155,7 @@ function hashPattern(code){
 }
 function lkMsg(text, cls){ var m = el('lk-msg'); m.textContent = text || ''; m.className = cls || ''; }
 function showLock(mode, first){
+  if(el('confirm-dialog').open)el('confirm-dialog').close('cancel');
   L.mode = mode; L.tmp = null; L.busy = false;
   if (first !== undefined) L.first = !!first;
   el('lock').hidden = false;
@@ -1270,6 +1316,176 @@ el('entry').addEventListener('click',function(e){
   if(state.lock===undefined)showLock('set1',true);else el('b-lang').focus();
  }
 });
+function buildTranscriptPdf(){
+  if(!window.jspdf || !window.jspdf.jsPDF)throw new Error('PDF unavailable');
+  var doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'}), results=update();
+  function clean(s){return String(s).replace(/[—–]/g,'-').replace(/œ/g,'oe').replace(/Œ/g,'OE');}
+  doc.setProperties({title:'Moyenne Master - '+t('reportTitle'),author:'Gherissi Sihem',subject:SPECIALITIES[state.speciality].name,creator:'Moyenne Master '+APP_VERSION});
+  doc.setFillColor(16,37,83);doc.rect(0,0,210,43,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(22);doc.text('Moyenne Master',16,19);doc.setFontSize(11);doc.text(clean(t('reportTitle')),16,29);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text('Universite de Tebessa - 2026/2027',16,36);
+  doc.setTextColor(30,41,59);doc.setFontSize(10);
+  var specLines=doc.splitTextToSize(clean(SPECIALITIES[state.speciality].name),178);doc.text(specLines,16,53);var y=53+specLines.length*5;
+  if(state.name){doc.text(clean(state.name),16,y+2);y+=7;}
+  doc.setFontSize(8);doc.setTextColor(90,105,125);doc.text(clean(t('savedOn'))+' : '+new Date().toLocaleDateString(state.lang==='fr'?'fr-FR':'en-GB'),16,y+3);y+=12;
+  SEMS.forEach(function(sem){
+    var S=results[sem.id];if(y>240){doc.addPage();y=20;}
+    doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(16,37,83);doc.text(clean(t(sem.id)),16,y);y+=6;
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text(clean(t('semAvg'))+' : '+f2(S.avg)+' / '+maxText()+'   |   '+S.credits+'/'+S.crTotal+' '+clean(t('reportCredits'))+(!S.complete?'   |   '+t('provisional'):''),16,y);y+=4;
+    var rows=[];
+    sem.ues.forEach(function(ue){
+      rows.push([{content:clean(ue.code+' - '+t('typ')[ue.k]),colSpan:6,styles:{fillColor:[232,238,249],textColor:[16,37,83],fontStyle:'bold'}}]);
+      ue.mods.forEach(function(m){var r=calcMod(m);rows.push([clean(modName(m)),String(m.coef),String(m.cr),m.cc>0&&!Number.isNaN(r.cc)?f2(r.cc):'-',m.cc<1&&!Number.isNaN(r.ex)?f2(r.ex):'-',r.done?f2(r.avg):'-']);});
+    });
+    doc.autoTable({startY:y,head:[[clean(t('thMod')),clean(t('thCoef')),clean(t('reportCredits')),'CC',clean(t('thEx')),clean(t('thAvg'))]],body:rows,theme:'grid',margin:{left:16,right:16,top:18,bottom:20},styles:{font:'helvetica',fontSize:8,cellPadding:2.5,overflow:'linebreak',lineColor:[222,229,240],textColor:[30,41,59]},headStyles:{fillColor:[16,37,83],textColor:[255,255,255]},columnStyles:{0:{cellWidth:83},1:{cellWidth:17,halign:'center'},2:{cellWidth:20,halign:'center'},3:{cellWidth:19,halign:'center'},4:{cellWidth:19,halign:'center'},5:{cellWidth:20,halign:'center'}},didParseCell:function(data){if(data.section==='body' && data.column.index===5 && typeof data.cell.raw==='string' && data.cell.raw!=='-'){var value=Number(data.cell.raw);if(isFinite(value))data.cell.styles.textColor=value>=10*sc().k?[14,120,65]:[185,35,30];}}});
+    y=doc.lastAutoTable.finalY+14;
+  });
+  if(y>245){doc.addPage();y=22;}
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(16,37,83);doc.text(clean(t('annual'))+' : '+f2(results.y)+' / '+maxText(),16,y);y+=7;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text(clean(t('reportCredits'))+' : '+(results.s1.credits+results.s2.credits)+'/'+(results.s1.crTotal+results.s2.crTotal)+(results.yDone?'   |   '+clean(mention(results.y)):'   |   '+t('provisional')),16,y);y+=8;
+  doc.setTextColor(90,105,125);doc.setFontSize(8);doc.text(doc.splitTextToSize(clean(t('reportNote')),178),16,y);
+  var pages=doc.getNumberOfPages();for(var page=1;page<=pages;page++){doc.setPage(page);doc.setDrawColor(222,229,240);doc.line(16,282,194,282);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,105,125);doc.text('Made by Gherissi Sihem',16,288);doc.text(page+' / '+pages,194,288,{align:'right'});}
+  return doc;
+}
+async function exportTranscriptPdf(button){
+ button.disabled=true;
+ try{var doc=buildTranscriptPdf(),data=doc.output('datauristring').split(',')[1];await saveOrShareFile(data,'Moyenne-Master-'+state.speciality+'-'+new Date().toISOString().slice(0,10)+'.pdf','application/pdf',true);}
+ catch(e){snack(String(e.message||'').indexOf(t('nativeFiles'))>=0?t('nativeFiles'):t('pdfFailed'));}
+ finally{button.disabled=false;}
+}
+
+/* Confirmations and private, portable backups. */
+var confirmJob = null, confirmFocus = null;
+function askConfirmation(title, note, label, action, trigger){
+  if(!el('lock').hidden)return;
+  var dialog=el('confirm-dialog');
+  if(dialog.open)dialog.close('cancel');
+  confirmJob=action;confirmFocus=trigger || document.activeElement;
+  el('confirm-title').textContent=title;el('confirm-note').textContent=note;
+  el('confirm-cancel').textContent=t('cancel');el('confirm-accept').textContent=label;
+  dialog.returnValue='cancel';dialog.showModal();el('confirm-cancel').focus();
+}
+el('confirm-dialog').querySelector('form').addEventListener('submit',function(e){
+  e.preventDefault();var accepted=e.submitter && e.submitter.value==='accept', fn=confirmJob, focus=confirmFocus;
+  confirmJob=null;confirmFocus=null;el('confirm-dialog').close(accepted?'accept':'cancel');
+  if(accepted && el('lock').hidden && fn)fn();
+  else if(focus && focus.isConnected && el('lock').hidden)focus.focus();
+});
+el('confirm-dialog').addEventListener('close',function(){
+  if(this.open)return;
+  var focus=confirmFocus;confirmJob=null;confirmFocus=null;
+  if(focus && focus.isConnected && el('lock').hidden)focus.focus();
+});
+function requestDelete(id,trigger){
+  var m=SEMS.flatMap(function(s){return s.ues.flatMap(function(u){return u.mods;});}).find(function(m){return m.id===id;});
+  if(!m)return;
+  var spec=state.speciality;
+  askConfirmation(t('deleteTitle'),t('deleteNote').replace('{name}',modName(m)),t('deleteConfirm'),function(){if(state.speciality===spec)deleteCustom(id);},trigger);
+}
+var PROFILE_KEYS=['v','o','c','custom','target','scale','deleted'];
+function makeBackup(){
+  var profiles={};
+  Object.keys(SPECIALITIES).forEach(function(spec){
+    var source=spec===state.speciality ? state : state.profiles[spec] || defaults(), result={};
+    PROFILE_KEYS.forEach(function(key){result[key]=source[key]===undefined ? defaults()[key] : source[key];});
+    profiles[spec]=result;
+  });
+  return JSON.parse(JSON.stringify({format:'moyenne-master-backup',version:1,createdAt:new Date().toISOString(),data:{speciality:state.speciality,profiles:profiles,lang:state.lang,theme:state.theme,name:state.name}}));
+}
+function validateBackup(input){
+  function fail(){throw new Error('Invalid backup');}
+  function object(v){return v && typeof v==='object' && !Array.isArray(v);}
+  function record(v){if(!object(v) || Object.keys(v).length>500)fail();return v;}
+  function id(v){if(typeof v!=='string' || !/^[A-Za-z0-9_-]{1,64}$/.test(v) || ['__proto__','constructor','prototype'].indexOf(v)>=0)fail();return v;}
+  function text(v,max){if(typeof v!=='string' || v.length>max)fail();return v;}
+  function number(v,min,max){if(typeof v!=='number' || !isFinite(v) || v<min || v>max)fail();return v;}
+  if(!object(input) || input.format!=='moyenne-master-backup' || input.version!==1 || !object(input.data))fail();
+  var data=input.data;
+  if(!SPECIALITIES[data.speciality] || !['afa','ama','edp'].includes(data.speciality))fail();
+  if(!['en','fr'].includes(data.lang) || !['auto','light','dark'].includes(data.theme))fail();
+  record(data.profiles);
+  var output={speciality:data.speciality,lang:data.lang,theme:data.theme,name:text(data.name,24),profiles:{}};
+  Object.keys(SPECIALITIES).forEach(function(spec){
+    var profile=record(data.profiles[spec]), clean={v:Object.create(null),o:Object.create(null),c:Object.create(null),custom:[],deleted:[],target:{}};
+    if(!SCALES[profile.scale] || !['20','100','gpa'].includes(profile.scale))fail();
+    clean.scale=profile.scale;
+    var original=SPECIALITIES[spec].sems.flatMap(function(s){return s.ues.flatMap(function(u){return u.mods;});});
+    var baseIds=original.map(function(m){return m.id;}), customIds=[];
+    if(!Array.isArray(profile.custom) || profile.custom.length>200 || !Array.isArray(profile.deleted) || profile.deleted.length>baseIds.length)fail();
+    profile.custom.forEach(function(m){
+      if(!object(m))fail();
+      var moduleId=id(m.id);if(!moduleId.startsWith('x') || baseIds.includes(moduleId) || customIds.includes(moduleId))fail();
+      customIds.push(moduleId);
+      var sem=SPECIALITIES[spec].sems.find(function(s){return s.id===m.sem;});
+      if(!sem || !sem.ues.some(function(u){return u.code===m.ue;}))fail();
+      var name=text(m.name,100).trim();if(!name)fail();
+      var coef=number(m.coef,0,100);if(!coef)fail();
+      clean.custom.push({id:moduleId,sem:m.sem,ue:m.ue,name:name,coef:coef,cr:number(m.cr,0,100),cc:number(m.cc,0,1)});
+    });
+    profile.deleted.forEach(function(moduleId){if(!baseIds.includes(moduleId) || clean.deleted.includes(moduleId))fail();clean.deleted.push(moduleId);});
+    Object.keys(record(profile.v)).forEach(function(moduleId){
+      id(moduleId);var marks=record(profile.v[moduleId]), v={};
+      ['cc','ex'].forEach(function(key){if(marks[key]!==undefined && marks[key]!==null)v[key]=text(String(marks[key]),32);});
+      clean.v[moduleId]=v;
+    });
+    Object.keys(record(profile.o)).forEach(function(moduleId){
+      id(moduleId);var m=original.find(function(x){return x.id===moduleId;});
+      var selected=Number(profile.o[moduleId]);if(!Number.isInteger(selected) || selected<0 || !m || (m.opts ? selected>=m.opts.length : selected!==0))fail();clean.o[moduleId]=selected;
+    });
+    var ueCodes=SPECIALITIES[spec].sems.flatMap(function(s){return s.ues.map(function(u){return u.code;});});
+    Object.keys(record(profile.c)).forEach(function(code){if(!ueCodes.includes(code) || ![0,1,false,true].includes(profile.c[code]))fail();clean.c[code]=profile.c[code]?1:0;});
+    record(profile.target);['s1','s2'].forEach(function(sem){clean.target[sem]=number(profile.target[sem],0,20);});
+    output.profiles[spec]=clean;
+  });
+  return output;
+}
+function applyBackup(clean){
+  var previous=state, restored=defaults();
+  ['speciality','profiles','lang','theme','name'].forEach(function(key){restored[key]=clean[key];});
+  PROFILE_KEYS.forEach(function(key){restored[key]=clean.profiles[clean.speciality][key];});
+  restored.lock=previous.lock;restored.lockWrong=previous.lockWrong;restored.lockUntil=previous.lockUntil;restored.view='set';
+  // Commit storage before replacing the in-memory view, so failed imports are atomic.
+  try{localStorage.setItem(KEY,JSON.stringify(restored));}catch(e){snack(t('backupError'));return;}
+  state=restored;clearTimeout(snackTimer);el('snack').hidden=true;el('snack-a').onclick=null;
+  SEMS=composeSems();buildAll();snack(t('restored'));
+}
+function nativePlugin(name){
+  var cap=window.Capacitor;
+  if(!cap || !cap.isPluginAvailable || !cap.isPluginAvailable(name))throw new Error(t('nativeFiles'));
+  var plugin=cap.Plugins && cap.Plugins[name];
+  if(!plugin && cap.registerPlugin)plugin=cap.registerPlugin(name);
+  if(!plugin)throw new Error(t('nativeFiles'));
+  return plugin;
+}
+async function saveOrShareFile(data,filename,mime,base64){
+  var cap=window.Capacitor;
+  if(cap && cap.isNativePlatform && cap.isNativePlatform()){
+    var filesystem=nativePlugin('Filesystem'),share=nativePlugin('Share');
+    var args={path:filename,directory:'CACHE',data:data};if(!base64)args.encoding='utf8';
+    var saved=await filesystem.writeFile(args);
+    try{await share.share({title:'Moyenne Master',url:saved.uri,dialogTitle:filename});return true;}
+    catch(e){if(/cancel/i.test(String(e.message||e)))return false;throw e;}
+  }
+  var bytes=data;
+  if(base64){var binary=atob(data);bytes=Uint8Array.from(binary,function(ch){return ch.charCodeAt(0);});}
+  var blob=new Blob([bytes],{type:mime}),url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();
+  setTimeout(function(){URL.revokeObjectURL(url);},30000);return true;
+}
+async function exportBackup(button){
+  button.disabled=true;
+  try{if(await saveOrShareFile(JSON.stringify(makeBackup(),null,2),'Moyenne-Master-backup-'+new Date().toISOString().slice(0,10)+'.json','application/json',false))snack(t('backupSaved'));}
+  catch(e){snack(String(e.message||'').indexOf(t('nativeFiles'))>=0?t('nativeFiles'):t('backupError'));}
+  finally{button.disabled=false;}
+}
+el('restore-file').addEventListener('change',async function(){
+  var file=this.files[0];this.value='';if(!file)return;
+  try{
+    if(file.size>1024*1024)throw new Error('File too large');
+    var parsed=validateBackup(JSON.parse(await file.text()));
+    if(!el('lock').hidden){snack(t('lockNow'));return;}
+    askConfirmation(t('restoreTitle'),t('restoreNote'),t('restoreConfirm'),function(){applyBackup(parsed);});
+  }catch(e){snack(t('restoreInvalid'));}
+});
+
 /* ---------- start ---------- */
 var mainNav = document.querySelector('nav.bottom');
 mainNav.insertAdjacentHTML('afterbegin', '<div class="nav-brand"><span class="nav-logo">m</span><span>Moyenne<br>Master<span style="color:var(--accent)">.</span></span></div>');

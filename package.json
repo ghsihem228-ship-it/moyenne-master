@@ -1,11 +1,13 @@
 {
   "name": "moyenne-master",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "dependencies": {
     "@capacitor/android": "6.2.0",
     "@capacitor/cli": "6.2.0",
-    "@capacitor/core": "6.2.0"
+    "@capacitor/core": "6.2.0",
+    "@capacitor/filesystem": "6.0.4",
+    "@capacitor/share": "6.0.4"
   },
   "scripts": {
     "start": "node scripts/serve.cjs",
