@@ -1,16 +1,17 @@
-# Moyenne Master 2.0
+# Moyenne Master 2.1
 
 A bilingual, offline-first grade calculator for Master mathematics students at Université de Tébessa. Built with HTML, CSS, JavaScript and Capacitor. App ID: `com.sihem.moyennemaster`.
 
 ## What is included
 
+- Professional bilingual launch screen credited to Gherissi Sihem.
 - Deep blue/slate interface, phone bottom navigation and desktop side rail.
 - Three speciality curricula with automatic modules, coefficients and choices.
 - EN/FR interface, Auto/Light/Dark themes, /20, /100 and linear 4.0 scales.
 - Live module/UE/semester/year averages, validation badges and credits.
 - Year transcript, module chart, copyable summary and coefficient breakdown.
 - Numeric and slider targets; required CC/exam marks when one mark is missing.
-- Custom modules with any continuous weight from 0–100%, deletion and Undo.
+- Add modules and delete both supplied and custom modules in each speciality, with Undo and any continuous weight from 0–100%.
 - Optional pattern lock, confirmation, five-attempt cooldown, change/remove and full reset.
 - Local saving and migration from `moyenne-master-vscode-v2` and `moyenne-afa-v1`.
 
@@ -35,7 +36,7 @@ npm run android:open
 5. In Android Studio use **Build → Generate Signed App Bundle or APK → APK**. Choose your EXISTING keystore and key alias. Select **release**, then Create.
 6. Install the resulting APK over the current app. Do not uninstall first. The app ID, signing key, WebView origin and application data must remain the same for marks to survive.
 
-`android:prepare-update` sets versionCode 2/versionName 2.0.0 after checking the app ID, and saves a local build.gradle backup. Later releases must increment versionCode again. Source updates are not automatically installed on phones.
+`android:prepare-update` sets versionCode 3/versionName 2.1.0 after checking the app ID, and saves a local build.gradle backup. Later releases must increment versionCode again. Source updates are not automatically installed on phones.
 
 For a new checkout without an Android project, run `npm install`, `npm run android:add`, then the prepare/sync/open steps. Do not run android:add over an existing Android folder.
 
@@ -43,7 +44,7 @@ For a new checkout without an Android project, run `npm install`, `npm run andro
 
 1. Test the signed release APK on your phone, including old marks, language, theme, lock and custom modules.
 2. Rename the signed APK to **Moyenne-Master.apk**.
-3. In GitHub choose **Releases → Create a new release**, tag `v2.0.0`, attach the APK and publish it. Attach only the APK, never the signing key.
+3. In GitHub choose **Releases → Create a new release**, tag `v2.1.0`, attach the APK and publish it. Attach only the APK, never the signing key.
 4. The stable download URL will be:
    https://github.com/ghsihem228-ship-it/moyenne-master/releases/latest/download/Moyenne-Master.apk
 5. Add the section in `docs/portfolio-download.html` to your portfolio source and redeploy on Netlify. That URL works only after publishing a release with the exact asset name.
@@ -64,4 +65,6 @@ The pattern is a casual viewing lock, not encryption or account security. “For
 
 Browser tests cover all curricula totals, weighting, migration from the installed version, language/scale preservation, target inputs, custom modules/Undo, credits/transcript, lock confirmation and persistent cooldown, reloads and mobile/desktop widths. Android compilation and physical-device behavior must be checked on the release build using your private signing key.
 
-To rerun browser checks: `npm install --no-save playwright@1.62.1`, `npx playwright install chromium`, start `npm start` in another terminal, then run `node tests/regression.cjs` and `node tests/edge-cases.cjs`. Optionally set `CHROMIUM_PATH` to a system Chromium executable.
+To rerun browser checks: `npm install --no-save playwright@1.62.1`, `npx playwright install chromium`, start `npm start` in another terminal, then run `node tests/regression.cjs` `node tests/edge-cases.cjs` and `node tests/launch-and-modules.cjs`. Optionally set `CHROMIUM_PATH` to a system Chromium executable.
+
+Version 2.1 keeps previous grades/settings and remembers deleted modules per speciality. Removing a module excludes it from calculations. Undo restores it with its saved marks. All changes remain local on the phone. The welcome screen appears on cold launches; the pattern lock still guards returns.

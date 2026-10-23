@@ -16,3 +16,4 @@ keystore.properties
 *.aab
 .DS_Store
 *.before-v2
+*.before-v3
