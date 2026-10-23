@@ -1218,7 +1218,7 @@ el('lk-freset').addEventListener('click', function(){
   showLock('set1', true);
 });
 document.addEventListener('visibilitychange', function(){
-  if (document.hidden && lockOn() && el('lock').hidden) showLock('verify');
+  if (document.hidden && lockOn()) showLock('verify', false);
 });
 
 document.addEventListener('keydown', function(e){
