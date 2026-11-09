@@ -1,6 +1,16 @@
-# Moyenne Master 2.2
+# Moyenne Master 2.3
 
 A bilingual, offline-first grade calculator for Master mathematics students at Université de Tébessa. Built with HTML, CSS, JavaScript and Capacitor. App ID: `com.sihem.moyennemaster`.
+
+## Version 2.3: Master 1 and Master 2
+
+Choose **Master 1** or **Master 2** above the speciality selector. Master 2 includes the AFA, AMA and EDPA curricula supplied for 2026–2027. EDPA appears under the existing full EDP speciality name. The semester tabs, summaries and PDFs show semesters 3 and 4 for Master 2.
+
+Semester 3 has seven modules, coefficient total 17 and 30 credits. All modules use 40% continuous assessment / 60% exam except scientific writing (100% exam). Optional choices count as one module. Semester 4 has a single **PFE avec mémoire**, coefficient 17 and 30 credits, entered as one final dissertation mark because the supplied tables do not specify a CC/exam split. The annual average remains the equal average of the two semesters.
+
+Marks, optional choices, custom/deleted modules, targets and scales are saved separately for every year and speciality. Existing installed data opens as Master 1 without changing the storage key or app ID. Backups now include both years (format version 2); version 1 backups still restore into Master 1 and clear Master 2 results after the replacement confirmation. Older app versions cannot import the new backups.
+
+See [Android Studio update instructions](docs/ANDROID-UPDATE-2.3.md) to update your existing app without replacing its native project or signing key.
 
 ## What is included
 
@@ -32,7 +42,7 @@ Install Node.js, open this folder in VS Code, then run `npm start`. Open http://
 4. Copy the new `package-lock.json` too, then in the terminal at the root of `moyenne`, run:
 
 ```powershell
-npm install
+npm ci
 npm run android:prepare-update
 npm run android:sync
 npm run android:open
@@ -41,7 +51,7 @@ npm run android:open
 5. In Android Studio use **Build → Generate Signed App Bundle or APK → APK**. Choose your EXISTING keystore and key alias. Select **release**, then Create.
 6. Install the resulting APK over the current app. Do not uninstall first. The app ID, signing key, WebView origin and application data must remain the same for marks to survive.
 
-`android:prepare-update` sets versionCode 4/versionName 2.2.0 after checking the app ID, and saves a local build.gradle backup. Later releases must increment versionCode again. Source updates are not automatically installed on phones.
+`android:prepare-update` sets versionCode 5/versionName 2.3.0 after checking the app ID, and saves a local build.gradle.before-v5 backup. It refuses to downgrade projects already above versionCode 5. Later releases must increment versionCode again. Source updates are not automatically installed on phones.
 
 For a new checkout without an Android project, run `npm install`, `npm run android:add`, then the prepare/sync/open steps. Do not run android:add over an existing Android folder.
 
@@ -49,7 +59,7 @@ For a new checkout without an Android project, run `npm install`, `npm run andro
 
 1. Test the signed release APK on your phone, including old marks, language, theme, lock and custom modules.
 2. Rename the signed APK to **Moyenne-Master.apk**.
-3. In GitHub choose **Releases → Create a new release**, tag `v2.2.0`, attach the APK and publish it. Attach only the APK, never the signing key.
+3. In GitHub choose **Releases → Create a new release**, tag `v2.3.0`, attach the APK and publish it. Attach only the APK, never the signing key.
 4. The stable download URL will be:
    https://github.com/ghsihem228-ship-it/moyenne-master/releases/latest/download/Moyenne-Master.apk
 5. Add the section in `docs/portfolio-download.html` to your portfolio source and redeploy on Netlify. That URL works only after publishing a release with the exact asset name.
@@ -70,7 +80,7 @@ The pattern is a casual viewing lock, not encryption or account security. “For
 
 Browser tests cover all curricula totals, weighting, migration from the installed version, language/scale preservation, target inputs, custom modules/Undo, credits/transcript, lock confirmation and persistent cooldown, reloads and mobile/desktop widths. Android compilation and physical-device behavior must be checked on the release build using your private signing key.
 
-To rerun browser checks: `npm install --no-save playwright@1.62.1`, `npx playwright install chromium`, start `npm start` in another terminal, then run `node tests/regression.cjs` `node tests/edge-cases.cjs` and `node tests/launch-and-modules.cjs`. Optionally set `CHROMIUM_PATH` to a system Chromium executable.
+To rerun browser checks: `npm install --no-save --package-lock=false playwright@1.62.1`, `npx playwright install chromium`, start `npm start` in another terminal, then run each script in `tests`: `regression.cjs`, `edge-cases.cjs`, `launch-and-modules.cjs`, `backup-and-polish.cjs`, `transcript-pdf.cjs`, and `master2.cjs`. Optionally set `CHROMIUM_PATH` to a system Chromium executable. The Master 2 checks cover all three curricula, semester/PFE calculations, upgrading existing Master 1 data, separation of all six profiles, reload, bilingual labels, PDF contents, and both backup formats.
 
 Version 2.1 keeps previous grades/settings and remembers deleted modules per speciality. Removing a module excludes it from calculations. Undo restores it with its saved marks. All changes remain local on the phone. The welcome screen appears on cold launches; the pattern lock still guards returns.
 

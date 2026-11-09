@@ -1,6 +1,6 @@
 {
   "name": "moyenne-master",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "dependencies": {
     "@capacitor/android": "6.2.0",

@@ -270,8 +270,8 @@ nav.bottom button[aria-selected="true"] .pill{background:var(--accent-soft);colo
 .welcome{padding:32px 0 24px;position:relative}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .welcome h2{font-size:clamp(26px,3.5vw,38px);letter-spacing:-.055em;line-height:1.2;margin:12px 0 10px;font-weight:800}.welcome p{margin:0;color:var(--muted);font-size:13px}.year-tag{position:absolute;right:0;top:34px;font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:100px;padding:8px 12px;background:var(--surface)}
 .speciality-card{display:grid;grid-template-columns:1fr;gap:8px;padding:18px 20px;margin:0 0 24px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-#speciality-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800}
-#speciality{width:100%;min-width:0;min-height:50px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit;font-weight:700;font-size:13px}
+#speciality-label,#study-year-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800}
+#speciality,#study-year{width:100%;min-width:0;min-height:50px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit;font-weight:700;font-size:13px}
 .speciality-note{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.speciality-note:before{content:"✓";color:var(--accent);font-weight:800}
 .view{min-width:0}.hero{padding:28px;border-radius:22px;margin:0;position:relative;overflow:hidden;background:radial-gradient(ellipse at top right,var(--hero-hi),transparent 60%),var(--hero)}.hero:after{content:"∑";position:absolute;right:-3px;bottom:-44px;font-family:Georgia,serif;font-size:200px;line-height:1;color:rgba(255,255,255,.035);pointer-events:none}.herotxt{position:relative;z-index:1}.hcap{font-size:10px;letter-spacing:.13em}.ringbox{width:136px;height:136px}.rv b{font-size:2rem}
 .card,.ue,.mini{border-radius:18px;box-shadow:var(--shadow)}.uehead{padding:18px 20px;border-left:4px solid var(--accent)}.uehead .t{font-size:13px}.uehead .t small{margin-top:4px;font-size:10px;letter-spacing:.015em}.uehead .chip{font-size:10px}.mod{padding:20px}.mname{font-size:13px;font-weight:750}.mmeta{font-size:10px;line-height:1.7;margin-top:6px}.badge{font-size:15px;min-width:58px;border-radius:10px}.fields label{font-size:9px;letter-spacing:.08em}input.g{height:49px;border-width:1px;border-radius:10px;font-size:17px}.mname select{font-size:12px;border-radius:10px}
@@ -337,6 +337,11 @@ body.entering{overflow:hidden}#entry{position:fixed;inset:0;z-index:70;overflow:
       <span class="year-tag">2026 — 2027</span>
     </div>
     <div class="speciality-card">
+      <label for="study-year" id="study-year-label">Année de master</label>
+      <select id="study-year">
+        <option value="m1">Master 1</option>
+        <option value="m2">Master 2</option>
+      </select>
       <label for="speciality" id="speciality-label">Spécialité</label>
       <select id="speciality">
         <option value="afa">Analyse Fonctionnelle et Applications</option>
@@ -461,9 +466,9 @@ Object.assign(T.en, {
  chooseOne:'Choose one module', optionNote:'Only the selected module counts in your results.',
  completion:'{n} of {t} modules complete', deleteTitle:'Remove this module?',
  deleteNote:'Removing “{name}” changes your semester average, coefficients and credits. You can undo immediately afterwards.',
- deleteConfirm:'Remove module', backupTitle:'Backup & restore', backupNote:'Save grades, module changes and settings for all three specialities. Your pattern lock is not included. Keep this file somewhere private.',
+ deleteConfirm:'Remove module', backupTitle:'Backup & restore', backupNote:'Save grades, module changes and settings for both master years and all three specialities. Your pattern lock is not included. Keep this file somewhere private.',
  backupExport:'Save a backup', backupImport:'Restore a backup', backupSaved:'Backup ready. Save or share the file.', backupError:'The file could not be saved. Please try again.',
- restoreTitle:'Replace your saved results?', restoreNote:'This backup will replace grades, module changes and settings for all three specialities. Your current pattern lock will stay. Save a backup of your current data first.',
+ restoreTitle:'Replace your saved results?', restoreNote:'This backup will replace grades, module changes and settings for both master years and all three specialities. Your current pattern lock will stay. Save a backup of your current data first.',
  restoreConfirm:'Restore results', restoreInvalid:'This is not a valid Moyenne Master backup. Your data has not changed.', restored:'Backup restored.', nativeFiles:'File sharing is unavailable. Rebuild the APK with the latest project dependencies.',
  reportPdf:'Export transcript as PDF', pdfFailed:'The PDF could not be created. Please try again.', reportTitle:'Academic transcript', reportNote:'Personal estimate — not an official university transcript.', savedOn:'Generated on', reportCredits:'Credits', provisional:'Provisional',
  about:'About the app'
@@ -472,9 +477,9 @@ Object.assign(T.fr, {
  chooseOne:'Choisissez un seul module', optionNote:'Seul le module sélectionné compte dans vos résultats.',
  completion:'{n} modules complets sur {t}', deleteTitle:'Retirer ce module ?',
  deleteNote:'Retirer « {name} » modifie la moyenne, les coefficients et les crédits du semestre. Vous pourrez annuler juste après.',
- deleteConfirm:'Retirer le module', backupTitle:'Sauvegarde et restauration', backupNote:'Sauvegardez les notes, les modifications des modules et les réglages des trois spécialités. Le schéma de verrouillage est exclu. Conservez ce fichier en lieu privé.',
+ deleteConfirm:'Retirer le module', backupTitle:'Sauvegarde et restauration', backupNote:'Sauvegardez les notes, les modifications des modules et les réglages des deux années de master et des trois spécialités. Le schéma de verrouillage est exclu. Conservez ce fichier en lieu privé.',
  backupExport:'Sauvegarder', backupImport:'Restaurer', backupSaved:'Sauvegarde prête. Enregistrez ou partagez le fichier.', backupError:'Impossible d’enregistrer le fichier. Réessayez.',
- restoreTitle:'Remplacer vos résultats ?', restoreNote:'Cette sauvegarde remplacera les notes, les modifications des modules et les réglages des trois spécialités. Votre schéma actuel sera conservé. Sauvegardez vos données actuelles au préalable.',
+ restoreTitle:'Remplacer vos résultats ?', restoreNote:'Cette sauvegarde remplacera les notes, les modifications des modules et les réglages des deux années de master et des trois spécialités. Votre schéma actuel sera conservé. Sauvegardez vos données actuelles au préalable.',
  restoreConfirm:'Restaurer les résultats', restoreInvalid:'Ce fichier n’est pas une sauvegarde Moyenne Master valide. Vos données sont conservées.', restored:'Sauvegarde restaurée.', nativeFiles:'Partage de fichiers indisponible. Reconstruisez l’APK avec les nouvelles dépendances.',
  reportPdf:'Exporter le relevé en PDF', pdfFailed:'Impossible de créer le PDF. Réessayez.', reportTitle:'Relevé de notes', reportNote:'Estimation personnelle — relevé non officiel.', savedOn:'Généré le', reportCredits:'Crédits', provisional:'Provisoire',
  about:'À propos'
@@ -533,9 +538,43 @@ moduleAt('edp',1,0,2).name = 'Équations aux dérivées partielles';
 moduleAt('edp',1,1,0).name = 'Méthode des éléments finis';
 moduleAt('edp',1,1,1).opts = ['Formulations variationnelles pour les problèmes aux limites','Inéquations variationnelles','Degré topologique et applications','EDP et traitement de l’image'];
 
-var APP_VERSION = '2.2.0';
+/* Keep the two semester view slots; labels become semesters 3/4 in Master 2. */
+function master2Sems(fundamental, methodological, options){
+  return [
+    {id:'s1', ues:[
+      {code:'UEF31', k:'F', mods:fundamental.map(function(name,i){return {id:'m2-f'+(i+1),name:name,coef:3,cr:6,cc:.4};})},
+      {code:'UEM31', k:'M', mods:[
+        {id:'m2-method',name:methodological,coef:3,cr:5,cc:.4},
+        {id:'m2-option',name:'Optionnel',coef:2,cr:4,cc:.4,opts:options}
+      ]},
+      {code:'UED31', k:'D', mods:[{id:'m2-research',name:'Séminaire de recherche scientifique',coef:2,cr:2,cc:.4}]},
+      {code:'UET31', k:'T', mods:[{id:'m2-writing',name:'Méthodologie et rédaction scientifique',coef:1,cr:1,cc:0}]}
+    ]},
+    {id:'s2', ues:[{code:'UEF41', k:'F', mods:[{id:'m2-pfe',name:'PFE avec mémoire',coef:17,cr:30,cc:0,finalMark:true}]}]}
+  ];
+}
+var MASTER2 = {
+  afa: master2Sems(
+    ['Théorie des semi-groupes et applications','Opérateurs non bornés','Théorie des opérateurs différentiels'],
+    'Méthodes numériques pour EDP non linéaires',
+    ['Systèmes dynamiques et contrôle','Inéquations variationnelles','Inclusions différentielles','Introduction aux méthodes d’approximation variationnelles','Méthodes numériques pour EDO']),
+  ama: master2Sems(
+    ['Équations intégrales','Théorie spectrale','Théorie des semi-groupes'],
+    'Introduction aux EDP non linéaires',
+    ['Analyse numérique des EDP','Inclusions différentielles','Modèles avancés pour le traitement d’images','Analyse asymptotique']),
+  edp: master2Sems(
+    ['Théorie des semi-groupes et applications pour les EDP','EDP elliptiques non linéaires','Théorie de régularité'],
+    'Calcul fractionnaire et applications',
+    ['Équations intégrales','Méthodes spectrales','Contrôle optimal','Analyse asymptotique','Estimation d’erreur a posteriori'])
+};
+function curriculum(spec,year){ return year === 'm2' ? MASTER2[spec] : SPECIALITIES[spec].sems; }
+/* Existing speciality keys stay Master 1 keys, preserving installed grades. */
+function profileKey(spec,year){ return year === 'm2' ? 'm2_'+spec : spec; }
+function profileIds(){ return ['afa','ama','edp','m2_afa','m2_ama','m2_edp']; }
+
+var APP_VERSION = '2.3.0';
 var KEY = 'moyenne-master-v3';
-function defaults(){ return { speciality:'afa', profiles:{}, v:{}, o:{}, c:{}, custom:[], deleted:[], target:{s1:10, s2:10}, lang:'fr', view:'s1', theme:'auto', name:'', scale:'20', lock:undefined }; }
+function defaults(){ return { speciality:'afa', year:'m1', profiles:{}, v:{}, o:{}, c:{}, custom:[], deleted:[], target:{s1:10, s2:10}, lang:'fr', view:'s1', theme:'auto', name:'', scale:'20', lock:undefined }; }
 var state = defaults();
 /* Migrate the version installed from VS Code without changing its /20 marks. */
 try {
@@ -565,6 +604,7 @@ try {
   }
 } catch(e) { /* Leave legacy data intact if storage is unavailable. */ }
 if (!SPECIALITIES[state.speciality]) state.speciality = 'afa';
+if (state.year !== 'm2') state.year = 'm1';
 if (!state.profiles || typeof state.profiles !== 'object') state.profiles = {};
 if (state.lang !== 'fr' && state.lang !== 'en') state.lang = 'en';
 if (['s1','s2','y','set'].indexOf(state.view) < 0) state.view = 's1';
@@ -579,13 +619,19 @@ var SCALES = { '20':{ k:1, max:20, dec:2, step:.25 }, '100':{ k:5, max:100, dec:
 function sc(){ return SCALES[state.scale]; }
 function maxText(){ return String(sc().max); }
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
-function t(k){ if (k === 'sub') return SPECIALITIES[state.speciality].name + ' · 2026–2027'; var v = T[state.lang][k]; return typeof v === 'string' ? v.split('{m}').join(maxText()) : v; }
+function yearName(){ return state.year === 'm2' ? 'Master 2' : 'Master 1'; }
+function t(k){
+  if (k === 'sub') return yearName() + ' · ' + SPECIALITIES[state.speciality].name + ' · 2026–2027';
+  if (state.year === 'm2' && (k === 's1' || k === 's2')) return (state.lang === 'fr' ? 'Semestre ' : 'Semester ') + (k === 's1' ? '3' : '4');
+  if (state.year === 'm2' && k === 'goS1') return (state.lang === 'fr' ? 'Aller au ' : 'Go to ') + t('s1');
+  var v = T[state.lang][k]; return typeof v === 'string' ? v.split('{m}').join(maxText()) : v;
+}
 function el(id){ return document.getElementById(id); }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 function lockOn(){ return typeof state.lock === 'string' && state.lock.length === 64; }
 
 function composeSems(){
-  return SPECIALITIES[state.speciality].sems.map(function(sem){
+  return curriculum(state.speciality,state.year).map(function(sem){
     return { id:sem.id, ues:sem.ues.map(function(ue){
       var extra = state.custom.filter(function(c){ return c.sem === sem.id && c.ue === ue.code; }).map(function(c){ return { id:c.id, name:c.name, coef:c.coef, cr:c.cr, cc:c.cc, custom:true }; });
       return { code:ue.code, k:ue.k, mods:ue.mods.concat(extra).filter(function(m){return (state.deleted || []).indexOf(m.id)<0;}) };
@@ -712,7 +758,8 @@ function buildSem(sem){
       var name = m.opts
         ? '<label class="option-label" for="sel-' + m.id + '">' + t('chooseOne') + '</label><select id="sel-' + m.id + '" aria-describedby="option-note-' + m.id + '">' + m.opts.map(function(o, i){ return '<option value="' + i + '"' + (i === sel ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select><small class="option-note" id="option-note-' + m.id + '">' + t('optionNote') + '</small>'
         : esc(m.name);
-      var w = m.cc > 0 ? Math.round(m.cc*100) + t('ccW') + ' · ' + Math.round((1-m.cc)*100) + t('examW') : t('exam100');
+      var finalLabel = state.lang === 'fr' ? 'Note finale du mémoire' : 'Final dissertation mark';
+      var w = m.finalMark ? finalLabel : m.cc > 0 ? Math.round(m.cc*100) + t('ccW') + ' · ' + Math.round((1-m.cc)*100) + t('examW') : t('exam100');
       h += '<div class="mod" id="mod-' + m.id + '"><div class="mtop"><div class="mname">' + name + '<div class="mmeta">' + (m.opts ? esc(m.name) + ' · ' : '') + t('coef') + ' ' + m.coef + ' · ' + m.cr + ' ' + t('cr') + ' · ' + w + (m.custom ? ' · ' + t('custom') : '') + '</div></div>' +
            '<div class="badge" id="r-' + m.id + '">—</div>' +
            ('<button class="ibtn sm" type="button" data-act="del:' + m.id + '" aria-label="' + esc(t('delAria') + ': ' + m.name) + '">' + TRASH + '</button>') + '</div>' +
@@ -720,7 +767,7 @@ function buildSem(sem){
            (m.cc > 0
              ? '<label for="cc-' + m.id + '">' + t('cc') + '<input class="g" id="cc-' + m.id + '" data-m="' + m.id + '" data-k="cc" type="text" inputmode="decimal" autocomplete="off" placeholder="/' + maxText() + '" value="' + esc(v.cc || '') + '"></label>'
              : '') +
-           '<label for="ex-' + m.id + '">' + t('ex') + '<input class="g" id="ex-' + m.id + '" data-m="' + m.id + '" data-k="ex" type="text" inputmode="decimal" autocomplete="off" placeholder="/' + maxText() + '" value="' + esc(v.ex || '') + '"></label>' +
+           '<label for="ex-' + m.id + '">' + (m.finalMark ? finalLabel : t('ex')) + '<input class="g" id="ex-' + m.id + '" data-m="' + m.id + '" data-k="ex" type="text" inputmode="decimal" autocomplete="off" placeholder="/' + maxText() + '" value="' + esc(v.ex || '') + '"></label>' +
            '</div><div class="hint" id="h-' + m.id + '"></div></div>';
     });
     h += '</div></section>';
@@ -768,6 +815,8 @@ function buildAll(){
   el('welcome-copy').textContent = state.lang === 'fr' ? 'Vos modules, vos notes, votre prochaine réussite.' : 'Your modules, your marks, your next milestone.';
   el('speciality-note').textContent = state.lang === 'fr' ? 'Modules et coefficients chargés automatiquement' : 'Modules and coefficients loaded automatically';
   el('speciality').value = state.speciality;
+  el('study-year').value = state.year;
+  el('study-year-label').textContent = state.lang === 'fr' ? 'Année de master' : 'Master year';
   el('speciality-label').textContent = state.lang === 'fr' ? 'Spécialité' : 'Speciality';
   el('avatar').textContent = 'm.';
   el('nl-s1').textContent = t('s1'); el('nl-s2').textContent = t('s2'); el('nl-y').textContent = t('y'); el('nl-set').textContent = t('set');
@@ -943,7 +992,7 @@ function update(){
 
 function summaryText(){
   var R = update();
-  var L = [t('sumTitle'), SPECIALITIES[state.speciality].name];
+  var L = [t('sumTitle'), yearName(), SPECIALITIES[state.speciality].name];
   SEMS.forEach(function(sem){
     var S = R[sem.id];
     L.push('', t(sem.id) + ' — ' + f2(S.avg) + ' / ' + maxText() + ' · ' + S.credits + '/' + S.crTotal + ' ' + t('credits'));
@@ -1000,17 +1049,20 @@ document.addEventListener('input', function(e){
     save(); update();
   }
 });
-function changeSpeciality(next){
-  if (!SPECIALITIES[next] || next === state.speciality) return;
-  state.profiles[state.speciality] = {v:state.v, o:state.o, c:state.c, custom:state.custom, target:state.target, scale:state.scale, deleted:state.deleted || []};
-  var saved = state.profiles[next] || defaults();
+function changeProfile(next,year){
+  if (!Object.prototype.hasOwnProperty.call(SPECIALITIES,next) || !['m1','m2'].includes(year) || (next === state.speciality && year === state.year)) return;
+  state.profiles[profileKey(state.speciality,state.year)] = {v:state.v, o:state.o, c:state.c, custom:state.custom, target:state.target, scale:state.scale, deleted:state.deleted || []};
+  var saved = state.profiles[profileKey(next,year)] || defaults();
   ['v','o','c','custom','target','scale','deleted'].forEach(function(k){ state[k] = saved[k] === undefined ? defaults()[k] : saved[k]; });
   state.speciality = next;
+  state.year = year;
   if (armed) { clearTimeout(armTimer); armed = false; }
   clearTimeout(snackTimer); el('snack').hidden = true; el('snack-a').onclick = null;
   save(); SEMS = composeSems(); buildAll();
 }
+function changeSpeciality(next){ changeProfile(next,state.year); }
 el('speciality').addEventListener('change', function(e){ changeSpeciality(e.target.value); });
+el('study-year').addEventListener('change', function(e){ changeProfile(state.speciality,e.target.value); });
 document.addEventListener('change', function(e){
   var tg = e.target;
   if (tg.id && tg.id.indexOf('sel-') === 0){ state.o[tg.id.slice(4)] = tg.value; save(); update(); }
@@ -1323,7 +1375,7 @@ function buildTranscriptPdf(){
   doc.setProperties({title:'Moyenne Master - '+t('reportTitle'),author:'Gherissi Sihem',subject:SPECIALITIES[state.speciality].name,creator:'Moyenne Master '+APP_VERSION});
   doc.setFillColor(16,37,83);doc.rect(0,0,210,43,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(22);doc.text('Moyenne Master',16,19);doc.setFontSize(11);doc.text(clean(t('reportTitle')),16,29);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text('Universite de Tebessa - 2026/2027',16,36);
   doc.setTextColor(30,41,59);doc.setFontSize(10);
-  var specLines=doc.splitTextToSize(clean(SPECIALITIES[state.speciality].name),178);doc.text(specLines,16,53);var y=53+specLines.length*5;
+  var specLines=doc.splitTextToSize(clean(yearName()+' - '+SPECIALITIES[state.speciality].name),178);doc.text(specLines,16,53);var y=53+specLines.length*5;
   if(state.name){doc.text(clean(state.name),16,y+2);y+=7;}
   doc.setFontSize(8);doc.setTextColor(90,105,125);doc.text(clean(t('savedOn'))+' : '+new Date().toLocaleDateString(state.lang==='fr'?'fr-FR':'en-GB'),16,y+3);y+=12;
   SEMS.forEach(function(sem){
@@ -1347,7 +1399,7 @@ function buildTranscriptPdf(){
 }
 async function exportTranscriptPdf(button){
  button.disabled=true;
- try{var doc=buildTranscriptPdf(),data=doc.output('datauristring').split(',')[1];await saveOrShareFile(data,'Moyenne-Master-'+state.speciality+'-'+new Date().toISOString().slice(0,10)+'.pdf','application/pdf',true);}
+ try{var doc=buildTranscriptPdf(),data=doc.output('datauristring').split(',')[1];await saveOrShareFile(data,'Moyenne-Master-'+state.year+'-'+state.speciality+'-'+new Date().toISOString().slice(0,10)+'.pdf','application/pdf',true);}
  catch(e){snack(String(e.message||'').indexOf(t('nativeFiles'))>=0?t('nativeFiles'):t('pdfFailed'));}
  finally{button.disabled=false;}
 }
@@ -1377,18 +1429,18 @@ el('confirm-dialog').addEventListener('close',function(){
 function requestDelete(id,trigger){
   var m=SEMS.flatMap(function(s){return s.ues.flatMap(function(u){return u.mods;});}).find(function(m){return m.id===id;});
   if(!m)return;
-  var spec=state.speciality;
-  askConfirmation(t('deleteTitle'),t('deleteNote').replace('{name}',modName(m)),t('deleteConfirm'),function(){if(state.speciality===spec)deleteCustom(id);},trigger);
+  var key=profileKey(state.speciality,state.year);
+  askConfirmation(t('deleteTitle'),t('deleteNote').replace('{name}',modName(m)),t('deleteConfirm'),function(){if(profileKey(state.speciality,state.year)===key)deleteCustom(id);},trigger);
 }
 var PROFILE_KEYS=['v','o','c','custom','target','scale','deleted'];
 function makeBackup(){
   var profiles={};
-  Object.keys(SPECIALITIES).forEach(function(spec){
-    var source=spec===state.speciality ? state : state.profiles[spec] || defaults(), result={};
+  profileIds().forEach(function(spec){
+    var source=spec===profileKey(state.speciality,state.year) ? state : state.profiles[spec] || defaults(), result={};
     PROFILE_KEYS.forEach(function(key){result[key]=source[key]===undefined ? defaults()[key] : source[key];});
     profiles[spec]=result;
   });
-  return JSON.parse(JSON.stringify({format:'moyenne-master-backup',version:1,createdAt:new Date().toISOString(),data:{speciality:state.speciality,profiles:profiles,lang:state.lang,theme:state.theme,name:state.name}}));
+  return JSON.parse(JSON.stringify({format:'moyenne-master-backup',version:2,createdAt:new Date().toISOString(),data:{speciality:state.speciality,year:state.year,profiles:profiles,lang:state.lang,theme:state.theme,name:state.name}}));
 }
 function validateBackup(input){
   function fail(){throw new Error('Invalid backup');}
@@ -1397,24 +1449,28 @@ function validateBackup(input){
   function id(v){if(typeof v!=='string' || !/^[A-Za-z0-9_-]{1,64}$/.test(v) || ['__proto__','constructor','prototype'].indexOf(v)>=0)fail();return v;}
   function text(v,max){if(typeof v!=='string' || v.length>max)fail();return v;}
   function number(v,min,max){if(typeof v!=='number' || !isFinite(v) || v<min || v>max)fail();return v;}
-  if(!object(input) || input.format!=='moyenne-master-backup' || input.version!==1 || !object(input.data))fail();
+  if(!object(input) || input.format!=='moyenne-master-backup' || ![1,2].includes(input.version) || !object(input.data))fail();
   var data=input.data;
   if(!SPECIALITIES[data.speciality] || !['afa','ama','edp'].includes(data.speciality))fail();
   if(!['en','fr'].includes(data.lang) || !['auto','light','dark'].includes(data.theme))fail();
   record(data.profiles);
-  var output={speciality:data.speciality,lang:data.lang,theme:data.theme,name:text(data.name,24),profiles:{}};
-  Object.keys(SPECIALITIES).forEach(function(spec){
+  if(input.version===2 && !['m1','m2'].includes(data.year))fail();
+  var output={speciality:data.speciality,year:input.version===1?'m1':data.year,lang:data.lang,theme:data.theme,name:text(data.name,24),profiles:{}};
+  profileIds().forEach(function(spec){
+    var year=spec.startsWith('m2_')?'m2':'m1', speciality=spec.replace(/^m2_/,'');
+    if(input.version===1 && year==='m2'){output.profiles[spec]=defaults();return;}
     var profile=record(data.profiles[spec]), clean={v:Object.create(null),o:Object.create(null),c:Object.create(null),custom:[],deleted:[],target:{}};
     if(!SCALES[profile.scale] || !['20','100','gpa'].includes(profile.scale))fail();
     clean.scale=profile.scale;
-    var original=SPECIALITIES[spec].sems.flatMap(function(s){return s.ues.flatMap(function(u){return u.mods;});});
+    var sems=curriculum(speciality,year);
+    var original=sems.flatMap(function(s){return s.ues.flatMap(function(u){return u.mods;});});
     var baseIds=original.map(function(m){return m.id;}), customIds=[];
     if(!Array.isArray(profile.custom) || profile.custom.length>200 || !Array.isArray(profile.deleted) || profile.deleted.length>baseIds.length)fail();
     profile.custom.forEach(function(m){
       if(!object(m))fail();
       var moduleId=id(m.id);if(!moduleId.startsWith('x') || baseIds.includes(moduleId) || customIds.includes(moduleId))fail();
       customIds.push(moduleId);
-      var sem=SPECIALITIES[spec].sems.find(function(s){return s.id===m.sem;});
+      var sem=sems.find(function(s){return s.id===m.sem;});
       if(!sem || !sem.ues.some(function(u){return u.code===m.ue;}))fail();
       var name=text(m.name,100).trim();if(!name)fail();
       var coef=number(m.coef,0,100);if(!coef)fail();
@@ -1430,7 +1486,7 @@ function validateBackup(input){
       id(moduleId);var m=original.find(function(x){return x.id===moduleId;});
       var selected=Number(profile.o[moduleId]);if(!Number.isInteger(selected) || selected<0 || !m || (m.opts ? selected>=m.opts.length : selected!==0))fail();clean.o[moduleId]=selected;
     });
-    var ueCodes=SPECIALITIES[spec].sems.flatMap(function(s){return s.ues.map(function(u){return u.code;});});
+    var ueCodes=sems.flatMap(function(s){return s.ues.map(function(u){return u.code;});});
     Object.keys(record(profile.c)).forEach(function(code){if(!ueCodes.includes(code) || ![0,1,false,true].includes(profile.c[code]))fail();clean.c[code]=profile.c[code]?1:0;});
     record(profile.target);['s1','s2'].forEach(function(sem){clean.target[sem]=number(profile.target[sem],0,20);});
     output.profiles[spec]=clean;
@@ -1439,8 +1495,8 @@ function validateBackup(input){
 }
 function applyBackup(clean){
   var previous=state, restored=defaults();
-  ['speciality','profiles','lang','theme','name'].forEach(function(key){restored[key]=clean[key];});
-  PROFILE_KEYS.forEach(function(key){restored[key]=clean.profiles[clean.speciality][key];});
+  ['speciality','year','profiles','lang','theme','name'].forEach(function(key){restored[key]=clean[key];});
+  PROFILE_KEYS.forEach(function(key){restored[key]=clean.profiles[profileKey(clean.speciality,clean.year)][key];});
   restored.lock=previous.lock;restored.lockWrong=previous.lockWrong;restored.lockUntil=previous.lockUntil;restored.view='set';
   // Commit storage before replacing the in-memory view, so failed imports are atomic.
   try{localStorage.setItem(KEY,JSON.stringify(restored));}catch(e){snack(t('backupError'));return;}

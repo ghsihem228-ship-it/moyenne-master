@@ -8,9 +8,9 @@ if (!/applicationId\s+["']com\.sihem\.moyennemaster["']/.test(source)) { console
 const match = source.match(/versionCode\s+(\d+)/);
 if (!match) throw new Error('Cannot locate versionCode');
 const code = Number(match[1]);
-if (code > 4) { console.error('Your project already has versionCode > 4. Review its version manually; no files changed.'); process.exit(1); }
-const backup = file + '.before-v4';
+if (code > 5) { console.error('Your project already has versionCode > 5. Review its version manually; no files changed.'); process.exit(1); }
+const backup = file + '.before-v5';
 if (!fs.existsSync(backup)) fs.copyFileSync(file, backup);
-source = source.replace(/versionCode\s+\d+/, 'versionCode 4').replace(/versionName\s+["'][^"']+["']/, 'versionName "2.2.0"');
+source = source.replace(/versionCode\s+\d+/, 'versionCode 5').replace(/versionName\s+["'][^"']+["']/, 'versionName "2.3.0"');
 fs.writeFileSync(file, source);
-console.log('Prepared versionCode 4 / versionName 2.2.0. Sign with the SAME .jks and alias as version 1.');
+console.log('Prepared versionCode 5 / versionName 2.3.0. Sign with the SAME .jks and alias as version 1.');
